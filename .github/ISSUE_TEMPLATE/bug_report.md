@@ -19,7 +19,7 @@ Which runtime(-version) are you using? (mono: mono -V, dotnet: dotnet --info)
 
 **Log**
 ```
-Paste the important log parts from the ts3audiobot.log into this code block here.
+Paste the important log parts from the NextGenAudio.log into this code block here.
 Try not to paste too little.
 At best from the first to last interaction from you which reproduces this problem.
 ```

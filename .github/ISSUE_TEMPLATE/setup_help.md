@@ -15,9 +15,9 @@ Steps to reproduce the behavior
   
 - **Mono version**: (`mono -V`)  
   
-- **Which commit did you download**: (or on prebuilt: `mono TS3AudioBot.exe -V`)  
+- **Which commit did you download**: (or on prebuilt: `mono NextGenAudio.exe -V`)  
   
-(If all fields in the TS3AudioBot log header are correctly filled you can
+(If all fields in the NextGenAudio log header are correctly filled you can
 alternatively just post the header here.)
 
 **Additional Logs, Exceptions, etc**

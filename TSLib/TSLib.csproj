@@ -11,7 +11,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <DebugType>portable</DebugType>
 
-    <RepositoryUrl>https://github.com/Splamy/TS3AudioBot.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Splamy/NextGenAudio.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -24,7 +24,7 @@
     </Description>
     <Copyright>Splamy, Flakebi, TSLib Contributors</Copyright>
     <PackageLicenseExpression>OSL-3.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Splamy/TS3AudioBot</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Splamy/NextGenAudio</PackageProjectUrl>
     <PackageTags>TeamSpeak, TS3, TS5, Voice, Client, Query, Normal, Communication</PackageTags>
     <Version>1.1.0</Version>
     <PackageIcon>ReSpeak.png</PackageIcon>

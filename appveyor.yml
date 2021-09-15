@@ -10,7 +10,7 @@ environment:
   UPLOAD_TOKEN:
     secure: wQTHAXf9NMII8m8gga6cVnA/yE6PCW5jzOppF7jgUlM=
 cache:
-  - '%USERPROFILE%\.nuget\packages -> TS3AudioBot\TS3AudioBot.csproj, TSLib\TSLib.csproj, TS3ABotUnitTests\TS3ABotUnitTests.csproj'
+  - '%USERPROFILE%\.nuget\packages -> NextGenAudio\NextGenAudio.csproj, TSLib\TSLib.csproj, NextGenABotUnitTests\NextGenABotUnitTests.csproj'
   - 'WebInterface\node_modules -> WebInterface\package.json'
 build:
   parallel: true
@@ -39,18 +39,18 @@ before_build:
 deploy_script:
 - pwsh: |-
     if(${env:UPLOAD_TOKEN}) {
-      dotnet publish TS3AudioBot -c Release --framework netcoreapp3.1
+      dotnet publish NextGenAudio -c Release --framework netcoreapp3.1
       $targets_linux = "linux-x64", "linux-arm", "linux-arm64"
       $targets = $targets_linux + "win-x64"
       foreach ($target in $targets) {
         Write-Host -ForegroundColor Yellow Publishing $target
-        dotnet publish TS3AudioBot -c Release --framework netcoreapp3.1 --self-contained --runtime $target -p:PublishSingleFile=true,IncludeSymbolsInSingleFile=true,PublishTrimmed=true
+        dotnet publish NextGenAudio -c Release --framework netcoreapp3.1 --self-contained --runtime $target -p:PublishSingleFile=true,IncludeSymbolsInSingleFile=true,PublishTrimmed=true
       }
 
       Write-Host -ForegroundColor Yellow Extracting Version
-      $rel = [io.path]::combine("${env:APPVEYOR_BUILD_FOLDER}", "TS3AudioBot", "bin", "Release")
+      $rel = [io.path]::combine("${env:APPVEYOR_BUILD_FOLDER}", "NextGenAudio", "bin", "Release")
       cd([io.path]::combine(${rel}, "netcoreapp3.1"))
-      (dotnet .\TS3AudioBot.dll -V | Out-String) -match "Version: (?<version>[-_\d\w\.]+)"
+      (dotnet .\NextGenAudio.dll -V | Out-String) -match "Version: (?<version>[-_\d\w\.]+)"
       $ver = $matches['version']
       echo "Current version: ${ver}"
 
@@ -63,13 +63,13 @@ deploy_script:
 
       Write-Host -ForegroundColor Yellow Packing dotnet core 3.1
       cd([io.path]::combine(${rel}, "netcoreapp3.1", "publish"))
-      Compress-Archive -Path *.*,lib,../../WebInterface -DestinationPath TS3AudioBot.zip
-      Invoke-RestMethod -Uri "https://splamy.de/api/nightly/ts3ab/${env:APPVEYOR_REPO_BRANCH}?filename=TS3AudioBot.zip&commit=${env:APPVEYOR_REPO_COMMIT}&version=${ver}" -Headers @{ "Content-Type" = "application/zip"; "Authorization" = "${env:UPLOAD_TOKEN}" } -Method Put -InFile .\TS3AudioBot.zip
+      Compress-Archive -Path *.*,lib,../../WebInterface -DestinationPath NextGenAudio.zip
+      Invoke-RestMethod -Uri "https://splamy.de/api/nightly/ts3ab/${env:APPVEYOR_REPO_BRANCH}?filename=NextGenAudio.zip&commit=${env:APPVEYOR_REPO_COMMIT}&version=${ver}" -Headers @{ "Content-Type" = "application/zip"; "Authorization" = "${env:UPLOAD_TOKEN}" } -Method Put -InFile .\NextGenAudio.zip
 
       Write-Host -ForegroundColor Yellow Packing win-x64
       cd([io.path]::combine(${rel}, "netcoreapp3.1", "win-x64", "publish"))
-      Compress-Archive -Path TS3AudioBot.exe,../../../WebInterface -DestinationPath TS3AudioBot.zip
-      Invoke-RestMethod -Uri "https://splamy.de/api/nightly/ts3ab/${env:APPVEYOR_REPO_BRANCH}_win_x64?filename=TS3AudioBot.zip&commit=${env:APPVEYOR_REPO_COMMIT}&version=${ver}" -Headers @{ "Content-Type" = "application/zip"; "Authorization" = "${env:UPLOAD_TOKEN}" } -Method Put -InFile .\TS3AudioBot.zip
+      Compress-Archive -Path NextGenAudio.exe,../../../WebInterface -DestinationPath NextGenAudio.zip
+      Invoke-RestMethod -Uri "https://splamy.de/api/nightly/ts3ab/${env:APPVEYOR_REPO_BRANCH}_win_x64?filename=NextGenAudio.zip&commit=${env:APPVEYOR_REPO_COMMIT}&version=${ver}" -Headers @{ "Content-Type" = "application/zip"; "Authorization" = "${env:UPLOAD_TOKEN}" } -Method Put -InFile .\NextGenAudio.zip
       
       $pack_linux = [io.path]::combine("${env:APPVEYOR_BUILD_FOLDER}", "Tools", "pack_linux.csx")
 
@@ -77,10 +77,10 @@ deploy_script:
         Write-Host -ForegroundColor Yellow Packing $target
         cd([io.path]::combine(${rel}, "netcoreapp3.1", $target, "publish"))
         Copy-Item $webInter -Destination "./WebInterface" -Recurse
-        # creates TS3AudioBot.tar.gz
+        # creates NextGenAudio.tar.gz
         dotnet script $pack_linux
         $name = $target -replace '-','_'
-        Invoke-RestMethod -Uri "https://splamy.de/api/nightly/ts3ab/${env:APPVEYOR_REPO_BRANCH}_${name}?filename=TS3AudioBot.tar.gz&commit=${env:APPVEYOR_REPO_COMMIT}&version=${ver}" -Headers @{ "Content-Type" = "application/gzip"; "Authorization" = "${env:UPLOAD_TOKEN}" } -Method Put -InFile .\TS3AudioBot.tar.gz
+        Invoke-RestMethod -Uri "https://splamy.de/api/nightly/ts3ab/${env:APPVEYOR_REPO_BRANCH}_${name}?filename=NextGenAudio.tar.gz&commit=${env:APPVEYOR_REPO_COMMIT}&version=${ver}" -Headers @{ "Content-Type" = "application/gzip"; "Authorization" = "${env:UPLOAD_TOKEN}" } -Method Put -InFile .\NextGenAudio.tar.gz
       }
     }
 

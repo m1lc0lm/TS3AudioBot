@@ -3,7 +3,7 @@
 		<section class="hero is-primary" style="margin-top:3em; margin-bottom:5em;">
 			<div class="hero-body">
 				<div class="container">
-					<h1 class="title">TS3Audiobot</h1>
+					<h1 class="title">NextGenAudio</h1>
 					<h2 class="subtitle">The selfhosted music bot of your choice!</h2>
 				</div>
 			</div>

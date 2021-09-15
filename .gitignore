@@ -38,7 +38,7 @@ latex/
 *.dll
 
 # Keep precompiled libs
-!TS3AudioBot/lib/**/*
+!NextGenAudio/lib/**/*
 !TS3Client/lib/**/*
 
 # Roslyn cache directories

@@ -6,7 +6,7 @@
 				id="ts3ab-logo"
 				tag="router-link"
 				:to="{ path: '/' }"
-			>TS3AudioBot</b-navbar-item>
+			>NextGenAudio</b-navbar-item>
 		</template>
 		<template slot="start">
 			<b-navbar-item tag="router-link" :to="{ path: '/overview' }">
@@ -25,7 +25,7 @@
 
 		<template slot="end">
 			<b-tooltip label="Visit our Project" position="is-bottom">
-				<b-navbar-item tag="a" href="https://github.com/Splamy/TS3AudioBot" target="_blank">
+				<b-navbar-item tag="a" href="https://github.com/Splamy/NextGenAudio" target="_blank">
 					<b-icon icon="github-circle"></b-icon>
 					<span class="is-hidden-desktop">Visit our Project</span>
 				</b-navbar-item>
@@ -34,7 +34,7 @@
 			<b-tooltip label="Report a bug" position="is-bottom">
 				<b-navbar-item
 					tag="a"
-					href="https://github.com/Splamy/TS3AudioBot/issues/new/choose"
+					href="https://github.com/Splamy/NextGenAudio/issues/new/choose"
 					target="_blank"
 				>
 					<b-icon icon="bug"></b-icon>
@@ -45,7 +45,7 @@
 			<b-tooltip label="Chat or ask for help" position="is-bottom">
 				<b-navbar-item
 					tag="a"
-					href="https://gitter.im/TS3AudioBot/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link"
+					href="https://gitter.im/NextGenAudio/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link"
 					target="_blank"
 				>
 					<b-icon icon="account-multiple"></b-icon>

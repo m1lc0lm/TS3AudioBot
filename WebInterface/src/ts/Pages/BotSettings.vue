@@ -19,7 +19,7 @@
 		</b-field>
 
 		<settings-group label="General">
-			<settings-field :filter="filter" path="run" label="Connect when TS3AudioBot starts">
+			<settings-field :filter="filter" path="run" label="Connect when NextGenAudio starts">
 				<b-switch v-model="model.run" size="is-medium"></b-switch>
 			</settings-field>
 			<settings-field :filter="filter" path="generate_status_avatar" label="Load song cover as avatar">
